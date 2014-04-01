@@ -14,7 +14,6 @@ The FlxAchievementSystem is built out of 3 classes:
 
 Everything you need to be good to go is a static instance of FlxAchievementSystem (it should be static so you can unlock achievements from anywhere in your project).
 
-<<<<<<< HEAD
 1 Declare a static instance of FlxAchievementSystem (do this in your FlxGame class):
 
 ```actionscript
@@ -22,15 +21,6 @@ public static var achievementSystem:FlxAchievementSystem;
 ```
 
 2 Declare an array of achievements (all your achievements should go in here as adding them later would cause the savefile to corrupt):
-=======
-1. Declare a static instance of FlxAchievementSystem (do this in your FlxGame class):
-
-```
-public static var achievementSystem:FlxAchievementSystem;
-```
-
-2. Declare an array of achievements (all your achievements should go in here as adding them later would cause the savefile to corrupt):
->>>>>>> 6f9d32b6adfaf2e876a1b6b3823771c39d5932ba
 
 ```actionscript
 private var achievements:Array =
@@ -41,7 +31,6 @@ private var achievements:Array =
 ```
 
 
-<<<<<<< HEAD
 3 In the constructor of your FlxGame class instantiate the FlxAchievementSystem:
 
 ```actionscript
@@ -51,17 +40,6 @@ achievementSystem = new FlxAchievementSystem("name of save", achievements);
 4 Last add the FlxAchievementSystem to the Flixel plugins (also in the FlxGames' constructor):
 
 ```actionscript
-=======
-3.  In the constructor of your FlxGame class instantiate the FlxAchievementSystem:
-
-```
-achievementSystem = new FlxAchievementSystem("name of save", achievements);
-```
-
-4. Last add the FlxAchievementSystem to the Flixel plugins (also in the FlxGames' constructor):
-
-```
->>>>>>> 6f9d32b6adfaf2e876a1b6b3823771c39d5932ba
 FlxG.addPlugin(achievementSystem);
 ```
 
@@ -82,8 +60,5 @@ I highly encourage you to contribute to this project as I would love to improve 
 
 -----------------------------------------------------------------------------------
 Copyrgith Chameneon.com
-<<<<<<< HEAD
 
-=======
->>>>>>> 6f9d32b6adfaf2e876a1b6b3823771c39d5932ba
 by Tal
