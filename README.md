@@ -16,27 +16,32 @@ Everything you need to be good to go is a static instance of FlxAchievementSyste
 
 1. Declare a static instance of FlxAchievementSystem (do this in your FlxGame class):
 
-    public static var achievementSystem:FlxAchievementSystem;
-
+```
+public static var achievementSystem:FlxAchievementSystem;
+```
 
 2. Declare an array of achievements (all your achievements should go in here as adding them later would cause the savefile to corrupt):
 
-    private var achievements:Array =
-    [	
-        new FlxAchievement("My first achievement", "Description"),
-        new FlxAchievement("My second achievement", "Description")
-    ]
+```actionscript
+private var achievements:Array =
+[	
+    new FlxAchievement("My first achievement", "Description"),
+    new FlxAchievement("My second achievement", "Description")
+]
+```
 
 
 3.  In the constructor of your FlxGame class instantiate the FlxAchievementSystem:
 
-    achievementSystem = new FlxAchievementSystem("name of save", achievements);
-
+```
+achievementSystem = new FlxAchievementSystem("name of save", achievements);
+```
 
 4. Last add the FlxAchievementSystem to the Flixel plugins (also in the FlxGames' constructor):
 
-    FlxG.addPlugin(achievementSystem);
-
+```
+FlxG.addPlugin(achievementSystem);
+```
 
 ##Unlocking achievements
 
@@ -49,8 +54,8 @@ To erase the progress on the savefile call erase().
 
 
 ###Contributing
-
 I highly encourage you to contribute to this project as I would love to improve it.
+
 
 
 -----------------------------------------------------------------------------------
