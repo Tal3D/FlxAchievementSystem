@@ -5,7 +5,7 @@ The FlxAchievementSystem is a class built on Flixel that handles global achievem
 It utilizes flash's shared object (or FlxSave) to save achievement progress.
 
 
-##Quick start
+##Quick Start
 
 The FlxAchievementSystem is built out of 3 classes:
 - FlxAchievementSystem: The core class with all the important functions.
@@ -14,16 +14,14 @@ The FlxAchievementSystem is built out of 3 classes:
 
 Everything you need to be good to go is a static instance of FlxAchievementSystem (it should be static so you can unlock achievements from anywhere in your project).
 
-##Set-Up
+###Set-Up
 
-####1. Declare a static instance of FlxAchievementSystem (do this in your FlxGame class):
-
+#####1. Declare a static instance of FlxAchievementSystem (do this in your FlxGame class):
 ```actionscript
 public static var achievementSystem:FlxAchievementSystem;
 ```
 
-####2. Declare an array of achievements (all your achievements should go in here as adding them later would cause the savefile to corrupt):
-
+#####2. Declare an array of achievements (all your achievements should go in here as adding them later would cause the savefile to corrupt):
 ```actionscript
 private var achievements:Array =
 [	
@@ -32,24 +30,22 @@ private var achievements:Array =
 ]
 ```
 
-####3. In the constructor of your FlxGame class instantiate the FlxAchievementSystem:
-
+#####3. In the constructor of your FlxGame class instantiate the FlxAchievementSystem:
 ```actionscript
 achievementSystem = new FlxAchievementSystem("name of save", achievements);
 ```
 
-####4. Last add the FlxAchievementSystem to the Flixel plugins (also in the FlxGame's constructor):
-
+#####4. Last add the FlxAchievementSystem to the Flixel plugins (also in the FlxGame's constructor):
 ```actionscript
 FlxG.addPlugin(achievementSystem);
 ```
 
-##Unlocking achievements
+###Unlocking Achievements
 
 To unlock achievements simply call the unlock() function.
 
 
-##Erasing progress
+###Erasing Progress
 
 To erase the progress on the savefile call erase().
 
