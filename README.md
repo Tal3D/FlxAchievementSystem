@@ -2,7 +2,7 @@ FlxAchievementSystem
 ====================
 
 The FlxAchievementSystem is a class built on Flixel that handles global achievements for individual games.
-It utilizes flashs shared object (or FlxSave) to save achievement progress.
+It utilizes flash's shared object (or FlxSave) to save achievement progress.
 
 
 ##Quick start
@@ -14,13 +14,15 @@ The FlxAchievementSystem is built out of 3 classes:
 
 Everything you need to be good to go is a static instance of FlxAchievementSystem (it should be static so you can unlock achievements from anywhere in your project).
 
-Declare a static instance of FlxAchievementSystem (do this in your FlxGame class):
+##Set-Up
+
+####1. Declare a static instance of FlxAchievementSystem (do this in your FlxGame class):
 
 ```actionscript
 public static var achievementSystem:FlxAchievementSystem;
 ```
 
-Declare an array of achievements (all your achievements should go in here as adding them later would cause the savefile to corrupt):
+####2. Declare an array of achievements (all your achievements should go in here as adding them later would cause the savefile to corrupt):
 
 ```actionscript
 private var achievements:Array =
@@ -30,14 +32,13 @@ private var achievements:Array =
 ]
 ```
 
-
-In the constructor of your FlxGame class instantiate the FlxAchievementSystem:
+####3. In the constructor of your FlxGame class instantiate the FlxAchievementSystem:
 
 ```actionscript
 achievementSystem = new FlxAchievementSystem("name of save", achievements);
 ```
 
-Last add the FlxAchievementSystem to the Flixel plugins (also in the FlxGames' constructor):
+####4. Last add the FlxAchievementSystem to the Flixel plugins (also in the FlxGame's constructor):
 
 ```actionscript
 FlxG.addPlugin(achievementSystem);
@@ -53,11 +54,9 @@ To unlock achievements simply call the unlock() function.
 To erase the progress on the savefile call erase().
 
 
-###Contributing
+##Contributing
 I highly encourage you to contribute to this project as I would love to improve it.
 
 
 -----------------------------------------------------------------------------------
-Copyright Chameneon.com
-
-by Tal
+Copyright Chameneon.com - by Tal
