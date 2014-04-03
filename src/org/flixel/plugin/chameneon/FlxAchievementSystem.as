@@ -25,17 +25,32 @@ package	org.flixel.plugin.chameneon
 		private var achievements:Array = new Array();
 		
 		/**
+		 * Whether the FlxAchievementSystem is in debug mode
+		 */
+		private var debug:Boolean;
+		
+		/**
+		 * Callback for when you unlock achievements.
+		 */
+		public var onUnlock:Function = new Function();
+		
+		/**
 		 * Create a new FlxAchievementSystem.
 		 * @param	saveName	The name of the save.
 		 * @param	achievements	An array of achievements. All of your games achievements should be passed here as you shouldn´t add them afterwards (causes issues with the save system).
+		 * @param	debug	Whether achievement progress should be loaded.
 		 */
-		public function FlxAchievementSystem(saveName:String, achievements:Array = null)
+		public function FlxAchievementSystem(saveName:String, achievements:Array, debug:Boolean = false)
 		{
 			notifier = new FlxAchievementNotifier();
 			achieved = new FlxSave();
 			achieved.bind(saveName);
 			create(achievements);
-			loadAchievements();
+			if (!debug)
+			{
+				loadAchievements();
+			}
+			this.debug = debug;
 		}
 		
 		/**
@@ -136,9 +151,13 @@ package	org.flixel.plugin.chameneon
 				if (achievements[j].name == name && !achievements[j].unlocked)
 				{
 					achievements[j].unlocked = true;
-					achieved.data.achievements[j].unlocked = true;
+					if (!debug)
+					{
+						achieved.data.achievements[j].unlocked = true;
+					}
 					FlxG.log("unlocked achievement '" + achievements[j].name + "'");
 					notifier.start(achievements[j]);
+					onUnlock(achievements[j]);
 				}
 			}
 		}
