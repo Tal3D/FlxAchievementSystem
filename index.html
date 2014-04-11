@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>FlxAchievementSystem by Tal3D</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>FlxAchievementSystem</h1>
+        <p>Achievements in Flixel</p>
+        <p class="view"><a href="https://github.com/Tal3D/FlxAchievementSystem">View the Project on GitHub <small>Tal3D/FlxAchievementSystem</small></a></p>
+        <ul>
+          <li><a href="https://github.com/Tal3D/FlxAchievementSystem/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/Tal3D/FlxAchievementSystem/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/Tal3D/FlxAchievementSystem">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>The FlxAchievementSystem is a class built on Flixel that handles global achievements for individual games.
+It utilizes flash's shared object (or FlxSave) to save achievement progress.</p>
+
+<h2>
+<a name="quick-start" class="anchor" href="#quick-start"><span class="octicon octicon-link"></span></a>Quick Start</h2>
+
+<p>The FlxAchievementSystem is built out of 3 classes:</p>
+
+<ul>
+<li>FlxAchievementSystem: The core class with all the important functions.</li>
+<li>FlxAchievement: A simple class that stores individual achievement info like name, description, icon and state of progress (locked/unlocked).</li>
+<li>FlxAchievementNotifier: A visual overlay that pops-up everytime you unlock an achievement.</li>
+</ul><p>Everything you need to be good to go is a static instance of FlxAchievementSystem (it should be static so you can unlock achievements from anywhere in your project).</p>
+
+<h3>
+<a name="set-up" class="anchor" href="#set-up"><span class="octicon octicon-link"></span></a>Set-Up</h3>
+
+<h5>
+<a name="1-declare-a-static-instance-of-flxachievementsystem-do-this-in-your-flxgame-class" class="anchor" href="#1-declare-a-static-instance-of-flxachievementsystem-do-this-in-your-flxgame-class"><span class="octicon octicon-link"></span></a>1. Declare a static instance of FlxAchievementSystem (do this in your FlxGame class):</h5>
+
+<div class="highlight highlight-actionscript"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nx">achievementSystem</span><span class="o">:</span><span class="nx">FlxAchievementSystem</span><span class="o">;</span>
+</pre></div>
+
+<h5>
+<a name="2-declare-an-array-of-achievements-all-your-achievements-should-go-in-here-as-adding-them-later-would-cause-the-savefile-to-corrupt" class="anchor" href="#2-declare-an-array-of-achievements-all-your-achievements-should-go-in-here-as-adding-them-later-would-cause-the-savefile-to-corrupt"><span class="octicon octicon-link"></span></a>2. Declare an array of achievements (all your achievements should go in here as adding them later would cause the savefile to corrupt):</h5>
+
+<div class="highlight highlight-actionscript"><pre><span class="kd">private</span> <span class="k">var</span> <span class="nx">achievements</span><span class="o">:</span><span class="nb">Array</span> <span class="o">=</span>
+<span class="p">[</span>   
+    <span class="k">new</span> <span class="nx">FlxAchievement</span><span class="p">(</span><span class="s2">"My first achievement"</span><span class="o">,</span> <span class="s2">"Description"</span><span class="p">)</span><span class="o">,</span>
+    <span class="k">new</span> <span class="nx">FlxAchievement</span><span class="p">(</span><span class="s2">"My second achievement"</span><span class="o">,</span> <span class="s2">"Description"</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+
+<h5>
+<a name="3-in-the-constructor-of-your-flxgame-class-instantiate-the-flxachievementsystem" class="anchor" href="#3-in-the-constructor-of-your-flxgame-class-instantiate-the-flxachievementsystem"><span class="octicon octicon-link"></span></a>3. In the constructor of your FlxGame class instantiate the FlxAchievementSystem:</h5>
+
+<div class="highlight highlight-actionscript"><pre><span class="nx">achievementSystem</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FlxAchievementSystem</span><span class="p">(</span><span class="s2">"name of save"</span><span class="o">,</span> <span class="nx">achievements</span><span class="p">);</span>
+</pre></div>
+
+<h5>
+<a name="4-last-add-the-flxachievementsystem-to-the-flixel-plugins-also-in-the-flxgames-constructor" class="anchor" href="#4-last-add-the-flxachievementsystem-to-the-flixel-plugins-also-in-the-flxgames-constructor"><span class="octicon octicon-link"></span></a>4. Last add the FlxAchievementSystem to the Flixel plugins (also in the FlxGame's constructor):</h5>
+
+<div class="highlight highlight-actionscript"><pre><span class="nx">FlxG</span><span class="p">.</span><span class="nx">addPlugin</span><span class="p">(</span><span class="nx">achievementSystem</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="unlocking-achievements" class="anchor" href="#unlocking-achievements"><span class="octicon octicon-link"></span></a>Unlocking Achievements</h3>
+
+<p>To unlock achievements simply call the unlock() function.</p>
+
+<h3>
+<a name="erasing-progress" class="anchor" href="#erasing-progress"><span class="octicon octicon-link"></span></a>Erasing Progress</h3>
+
+<p>To erase the progress on the savefile call erase().</p>
+
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>I highly encourage you to contribute to this project as I would love to improve it.</p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/Tal3D">Tal3D</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
