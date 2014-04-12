@@ -11,6 +11,10 @@ The FlxAchievementSystem is built out of 3 classes:
 - FlxAchievement: A simple class that stores individual achievement info like name, description, icon and state of progress (locked/unlocked).
 - FlxAchievementNotifier: A visual overlay that pops-up everytime you unlock an achievement.
 
+```actionscript
+import org.flixel.plugin.chameneon.*;
+```
+
 Everything you need to be good to go is a static instance of FlxAchievementSystem (it should be static so you can unlock achievements from anywhere in your project).
 
 ###Set-Up
