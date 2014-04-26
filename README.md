@@ -1,4 +1,4 @@
-![FlxAchievementSystem](res/flxachievementsystem.png)
+![FlxAchievementSystem](https://raw.githubusercontent.com/Tal3D/FlxAchievementSystem/master/res/flxachievementsystem.png)
 
 The FlxAchievementSystem is a class built on Flixel that handles global achievements for individual games.
 It utilizes flash's shared object (or FlxSave) to save achievement progress.
@@ -47,15 +47,9 @@ FlxG.addPlugin(achievementSystem);
 
 To unlock achievements simply call the unlock() function.
 
-
 ###Erasing Progress
 
 To erase the progress on the savefile call erase().
 
-
 ##Contributing
 I highly encourage you to contribute to this project as I would love to improve it.
-
-
------------------------------------------------------------------------------------
-Copyright Chameneon.com - by Tal
